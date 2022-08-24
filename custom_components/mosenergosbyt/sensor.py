@@ -67,7 +67,7 @@ class MosenergoSensor(Entity):
         return f"mosenergosbyt_{self.name}"
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         if self._state:
             measure = self._state.last_measure
             attributes = {
