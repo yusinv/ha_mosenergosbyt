@@ -36,9 +36,9 @@ class MosenergoSensor(Entity):
     def __init__(self, client, meter_id):
         """Initialize the sensor."""
         self.client = client
-        self._device_class = 'power'
-        self._unit = 'kw'
-        self._icon = 'mdi:speedometer'
+        self._device_class = 'monetary'
+        self._unit = 'руб'
+        self._icon = 'mdi:currency-rub'
         self._available = True
         self._name = meter_id
         self._state = None
@@ -54,12 +54,12 @@ class MosenergoSensor(Entity):
     def state(self):
         """Return the state of the sensor."""
         if self._state:
-            return self._state.last_measure.nm_status
+            return self._state.vl_debt
 
     @property
     def unit_of_measurement(self):
         """Return the unit of measurement."""
-        return 'кв'
+        return self._unit
 
     @property
     def unique_id(self) -> str:
